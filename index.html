@@ -3,156 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>March Birthday Bash 🎉</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="logo.jpg" type="image/x-icon">
+<title>March Birthday Bash – Summer Edition 🌞</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0d0d;
-    --card: #161616;
-    --accent1: #FF6B6B;
-    --accent2: #FFD93D;
-    --accent3: #6BCB77;
-    --accent4: #4D96FF;
-    --text: #f0ede6;
-    --muted: #888;
+    --sky: #FFF9ED;
+    --sand: #FDECC8;
+    --ocean: #0096C7;
+    --ocean-light: #48CAE4;
+    --sun: #FFB703;
+    --coral: #FB5607;
+    --palm: #2D6A4F;
+    --foam: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #3a3a5c;
+    --wave1: #90E0EF;
+    --wave2: #48CAE4;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
+    background: var(--sky);
+    font-family: 'Nunito', sans-serif;
     min-height: 100vh;
-    padding: 40px 20px;
     overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
+  /* ===== SUN ===== */
+  .sun {
     position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255,107,107,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(77,150,255,0.1) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .confetti-bg {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .dot {
-    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
-    opacity: 0.15;
-    animation: float linear infinite;
+    background: radial-gradient(circle, #FFE566 30%, #FFB703 70%, #FF8C00 100%);
+    box-shadow: 0 0 60px 30px rgba(255,183,3,0.3);
+    animation: pulse-sun 4s ease-in-out infinite;
+    z-index: 0;
   }
 
-  @keyframes float {
-    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.15; }
-    90% { opacity: 0.15; }
-    100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+  @keyframes pulse-sun {
+    0%, 100% { box-shadow: 0 0 60px 30px rgba(255,183,3,0.3); }
+    50% { box-shadow: 0 0 90px 50px rgba(255,183,3,0.5); }
   }
 
+  /* ===== WAVES ===== */
+  .waves-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 80px;
+    border-radius: 100% 100% 0 0;
+  }
+
+  .wave1 {
+    background: var(--wave1);
+    opacity: 0.5;
+    animation: wave-anim 6s linear infinite;
+    bottom: 20px;
+  }
+
+  .wave2 {
+    background: var(--wave2);
+    opacity: 0.4;
+    animation: wave-anim 9s linear infinite reverse;
+    bottom: 0;
+  }
+
+  .wave3 {
+    background: var(--ocean);
+    opacity: 0.6;
+    animation: wave-anim 7s linear infinite;
+    bottom: -10px;
+    height: 60px;
+  }
+
+  @keyframes wave-anim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== FLOATING ELEMENTS ===== */
+  .floatie {
+    position: fixed;
+    font-size: 24px;
+    animation: drift linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes drift {
+    0% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-18px) rotate(5deg); }
+    66% { transform: translateY(8px) rotate(-5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  /* ===== LAYOUT ===== */
   .wrapper {
-    max-width: 600px;
+    max-width: 620px;
     margin: 0 auto;
+    padding: 40px 20px 160px;
     position: relative;
     z-index: 1;
   }
 
-  /* HEADER */
+  /* ===== HEADER ===== */
   .header {
     text-align: center;
-    margin-bottom: 40px;
-    animation: fadeDown 0.7s ease both;
+    margin-bottom: 36px;
+    animation: splashIn 0.7s cubic-bezier(.34,1.56,.64,1) both;
   }
 
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes splashIn {
+    from { opacity: 0; transform: scale(0.8) translateY(-20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
   }
 
-  .month-tag {
+  .tag {
     display: inline-block;
-    background: var(--accent1);
-    color: #000;
+    background: var(--ocean);
+    color: #fff;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
-    padding: 6px 18px;
+    padding: 6px 20px;
     border-radius: 100px;
     margin-bottom: 16px;
   }
 
   h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 10vw, 72px);
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(46px, 12vw, 78px);
     font-weight: 900;
-    line-height: 1;
-    letter-spacing: -2px;
+    color: var(--coral);
+    line-height: 0.95;
+    text-shadow: 4px 4px 0px rgba(255,140,0,0.3);
+    letter-spacing: -1px;
   }
 
-  h1 span {
-    color: var(--accent2);
+  h1 .line2 {
+    color: var(--ocean);
     display: block;
+    text-shadow: 4px 4px 0px rgba(0,150,199,0.2);
   }
 
-  .subtitle {
-    font-size: 14px;
-    color: var(--muted);
+  .sub {
     margin-top: 12px;
+    font-size: 14px;
+    color: var(--text-mid);
+    font-weight: 600;
     letter-spacing: 1px;
   }
 
-  .duration-badge {
+  .duration {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 8px 16px;
+    gap: 8px;
+    background: white;
+    border: 2px solid var(--sand);
+    padding: 8px 20px;
     border-radius: 100px;
     font-size: 13px;
-    color: var(--muted);
-    margin-top: 18px;
+    color: var(--text-mid);
+    font-weight: 700;
+    margin-top: 14px;
+    box-shadow: 0 4px 0px var(--sand);
   }
 
-  /* PROGRAM ITEMS */
+  /* ===== PROGRAM ITEMS ===== */
   .program {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .item {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 20px 24px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px 22px;
     display: flex;
     align-items: flex-start;
-    gap: 18px;
-    animation: fadeUp 0.5s ease both;
-    transition: border-color 0.2s, transform 0.2s;
+    gap: 16px;
+    border: 2px solid transparent;
+    box-shadow: 0 6px 0px rgba(0,0,0,0.06);
+    animation: riseUp 0.5s ease both;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    border-radius: 20px 0 0 20px;
   }
 
   .item:hover {
-    border-color: rgba(255,255,255,0.15);
-    transform: translateX(4px);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 0px rgba(0,0,0,0.08);
   }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
+  @keyframes riseUp {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -165,274 +234,300 @@
   .item:nth-child(7) { animation-delay: 0.5s; }
   .item:nth-child(8) { animation-delay: 0.55s; }
 
-  .item-icon {
-    font-size: 26px;
+  /* Color variants */
+  .c-coral::before { background: var(--coral); }
+  .c-ocean::before { background: var(--ocean); }
+  .c-sun::before { background: var(--sun); }
+  .c-palm::before { background: var(--palm); }
+  .c-coral { border-color: rgba(251,86,7,0.12); }
+  .c-ocean { border-color: rgba(0,150,199,0.15); }
+  .c-sun { border-color: rgba(255,183,3,0.2); }
+  .c-palm { border-color: rgba(45,106,79,0.15); }
+
+  .icon {
+    font-size: 30px;
     line-height: 1;
     flex-shrink: 0;
     margin-top: 2px;
   }
 
-  .item-body { flex: 1; }
+  .body { flex: 1; }
 
-  .item-title {
-    font-family: 'Playfair Display', serif;
+  .title {
+    font-family: 'Baloo 2', cursive;
     font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
+    font-weight: 800;
+    color: var(--text-dark);
     margin-bottom: 4px;
+    line-height: 1.2;
   }
 
-  .item-title.colored { color: var(--accent1); }
-  .item-title.colored2 { color: var(--accent2); }
-  .item-title.colored3 { color: var(--accent3); }
-  .item-title.colored4 { color: var(--accent4); }
+  .title.t-coral { color: var(--coral); }
+  .title.t-ocean { color: var(--ocean); }
+  .title.t-sun { color: #d48f00; }
+  .title.t-palm { color: var(--palm); }
 
-  .item-desc {
+  .desc {
     font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
+    color: var(--text-mid);
+    line-height: 1.65;
   }
 
-  .assignee {
+  .badge {
     display: inline-block;
-    background: rgba(255,255,255,0.08);
-    color: var(--text);
     font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
+    font-weight: 800;
+    padding: 3px 12px;
     border-radius: 100px;
     margin-top: 8px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
 
-  .sub-item {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-top: 8px;
-  }
+  .badge-coral { background: rgba(251,86,7,0.1); color: var(--coral); }
+  .badge-ocean { background: rgba(0,150,199,0.1); color: var(--ocean); }
+  .badge-sun { background: rgba(255,183,3,0.15); color: #b07800; }
 
-  .sub-bullet {
-    color: var(--accent1);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .sub-text {
-    font-size: 13px;
-    color: var(--text);
-    opacity: 0.85;
-  }
-
-  .sub-assignee {
-    font-size: 11px;
-    color: var(--accent4);
-    font-weight: 600;
-  }
-
-  /* SPECIAL CARDS */
-  .item.highlight-red { border-color: rgba(255,107,107,0.3); }
-  .item.highlight-yellow { border-color: rgba(255,217,61,0.3); }
-  .item.highlight-green { border-color: rgba(107,203,119,0.3); }
-
-  /* TOKEN BOX */
+  /* Token box */
   .token-box {
-    background: linear-gradient(135deg, rgba(255,217,61,0.1), rgba(255,107,107,0.1));
-    border: 1px dashed rgba(255,217,61,0.4);
-    border-radius: 12px;
+    background: linear-gradient(135deg, #FFFBEA, #FFF3CC);
+    border: 1.5px dashed var(--sun);
+    border-radius: 14px;
     padding: 14px 16px;
     margin-top: 12px;
   }
 
   .token-label {
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent2);
+    color: #b07800;
     margin-bottom: 6px;
   }
 
   .token-desc {
-    font-size: 12px;
-    color: var(--text);
-    opacity: 0.8;
-    line-height: 1.6;
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.7;
   }
 
-  /* DIVIDER */
-  .divider {
+  /* Sub items for games */
+  .sub-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    background: rgba(0,150,199,0.05);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .sub-num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--ocean-light);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .sub-body { flex: 1; }
+  .sub-title {
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--ocean);
+    margin-bottom: 3px;
+  }
+  .sub-desc { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+  .sub-by { font-size: 11px; font-weight: 800; color: var(--coral); margin-top: 4px; }
+
+  /* Wave divider */
+  .wave-divider {
     text-align: center;
-    color: rgba(255,255,255,0.1);
-    font-size: 18px;
-    letter-spacing: 8px;
+    font-size: 22px;
+    letter-spacing: 6px;
     margin: 4px 0;
+    opacity: 0.4;
+    color: var(--ocean);
   }
 
-  /* FOOTER */
+  /* Footer */
   .footer {
     text-align: center;
     margin-top: 40px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 1px;
-    animation: fadeUp 0.5s 0.7s ease both;
+    padding-bottom: 20px;
+    animation: riseUp 0.5s 0.7s ease both;
   }
 
-  .big-emoji {
-    font-size: 48px;
-    display: block;
-    margin-bottom: 8px;
+  .footer-emoji { font-size: 40px; display: block; margin-bottom: 10px; }
+
+  .footer-text {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ocean);
+  }
+
+  .footer-sub {
+    font-size: 12px;
+    color: var(--text-mid);
+    opacity: 0.6;
+    margin-top: 4px;
+    letter-spacing: 1px;
   }
 </style>
 </head>
 <body>
 
-<!-- Floating dots -->
-<div class="confetti-bg" id="dots"></div>
+<!-- Sun -->
+<div class="sun"></div>
+
+<!-- Floating emojis -->
+<div class="floatie" style="top:15%;left:3%;animation-duration:5s;animation-delay:0s;">🌴</div>
+<div class="floatie" style="top:30%;left:92%;animation-duration:7s;animation-delay:1s;">🌊</div>
+<div class="floatie" style="top:55%;left:5%;animation-duration:6s;animation-delay:2s;">🐚</div>
+<div class="floatie" style="top:70%;left:90%;animation-duration:8s;animation-delay:0.5s;">🦀</div>
+<div class="floatie" style="top:80%;left:8%;animation-duration:5.5s;animation-delay:1.5s;">⛱️</div>
+
+<!-- Waves -->
+<div class="waves-bottom">
+  <div class="wave wave1"></div>
+  <div class="wave wave2"></div>
+  <div class="wave wave3"></div>
+</div>
 
 <div class="wrapper">
 
   <!-- HEADER -->
   <div class="header">
-    <div class="month-tag">🎂 Monthly Celebration</div>
-    <h1>MARCH<span>BASH!</span></h1>
-    <p class="subtitle">Birthday Celebration Program</p>
-    <div class="duration-badge">⏱ Approximately 15–30 minutes</div>
+    <div class="tag">☀️ Summer Edition · March</div>
+    <h1>MARCH<span class="line2">BEACH BASH!</span></h1>
+    <p class="sub">🎂 Monthly Birthday Celebration Program 🎂</p>
+    <div class="duration">⏱ 15–30 minutes &nbsp;·&nbsp; Tara na sa celebration!</div>
   </div>
 
   <!-- PROGRAM -->
   <div class="program">
 
     <!-- 1. Opening Prayer -->
-    <div class="item">
-      <div class="item-icon">🙏</div>
-      <div class="item-body">
-        <div class="item-title colored">Opening Prayer</div>
-        <div class="item-desc">We begin with a moment of gratitude and blessings for our March celebrants.</div>
-        <span class="assignee">Led by: JAMES</span>
+    <div class="item c-coral">
+      <div class="icon">🙏</div>
+      <div class="body">
+        <div class="title t-coral">Opening Prayer</div>
+        <div class="desc">We kick off with a prayer of gratitude and blessings for all our March beachcombers — err, celebrants!</div>
+        <span class="badge badge-coral">Led by: JAMES</span>
       </div>
     </div>
 
     <!-- 2. Recognition -->
-    <div class="item highlight-yellow">
-      <div class="item-icon">🎭</div>
-      <div class="item-body">
-        <div class="item-title colored2">Recognition of March Birthday Celebrants</div>
-        <div class="item-desc">
-          Each celebrant is called one by one — but here's the twist: instead of a normal introduction,
-          the emcee reads a <strong>"dramatic telenovela narration"</strong> of their life story (exaggerated and made up on the spot). 
-          The celebrant must react dramatically to every line! 🎬
+    <div class="item c-sun">
+      <div class="icon">🎭</div>
+      <div class="body">
+        <div class="title t-sun">Recognition of March Birthday Celebrants</div>
+        <div class="desc">
+          Each celebrant walks up to receive their recognition — but the emcee introduces them as if they're a <strong>famous summer tourist spot</strong>.
+          <br><br>
+          <em>e.g., "Ladies and gentlemen, welcome to [Name] — known for its warm personality, unpredictable weather, and zero entrance fee!" 🏝️</em>
+          <br><br>
+          The crowd rates each "tourist spot" by waving their hands like a wave! 🌊
         </div>
         <div class="token-box">
-          <div class="token-label">🎁 Token Suggestion</div>
+          <div class="token-label">🎁 Summer Token — "Beach Survival Kit"</div>
           <div class="token-desc">
-            <strong>A personalized "Birthday Survival Kit"</strong> — a small resealable bag containing:
-            a <em>candy</em> (for sweetness), a <em>coin</em> (for prosperity), a <em>small note</em> with a handwritten wish from the team, and a <em>rubber band</em> (to keep it all together). 
-            Cheap to make but deeply personal. 💛
+            A small resealable bag tied with a raffia ribbon containing:
+            <br>🌞 <strong>Sunscreen sachet</strong> — "for a bright year ahead"
+            <br>🍬 <strong>Candy</strong> — "because life should be sweet"
+            <br>🪙 <strong>Coin</strong> — "for good fortune"
+            <br>📝 <strong>Handwritten note</strong> from the team — the real treasure
+            <br><br>
+            Cheap to make (~₱25–35) but full of summer heart! 💛
           </div>
         </div>
       </div>
     </div>
 
     <!-- 3. Games -->
-    <div class="item highlight-green">
-      <div class="item-icon">🎮</div>
-      <div class="item-body">
-        <div class="item-title colored3">Games</div>
+    <div class="item c-ocean">
+      <div class="icon">🎮</div>
+      <div class="body">
+        <div class="title t-ocean">Summer Games</div>
         <div class="sub-item">
-          <span class="sub-bullet">→</span>
-          <span class="sub-text">
-            <strong>"Birthday Lie Detector"</strong> — Each celebrant shares 2 truths and 1 lie about themselves. 
-            The crowd votes on which one is the lie!
-            <br><span class="sub-assignee">Game Master: MARK</span>
-          </span>
+          <div class="sub-num">1</div>
+          <div class="sub-body">
+            <div class="sub-title">🕵️ "Hot Sand, Don't Stop!" (Musical Chairs — Summer Remix)</div>
+            <div class="sub-desc">Play a fun OPM summer song. Whoever is left standing when it stops has to answer a fun summer question — like "Describe your dream beach in 5 words!" Last person seated wins a treat. ☀️</div>
+            <div class="sub-by">Game Master: MARK</div>
+          </div>
         </div>
         <div class="sub-item">
-          <span class="sub-bullet">→</span>
-          <span class="sub-text">
-            <strong>"Hula Hula Birthday Edition"</strong> — Pass a hula hoop through a line of people without letting go of hands. 
-            The team that finishes fastest wins a treat!
-            <br><span class="sub-assignee">Game Master: TRISHIA</span>
-          </span>
+          <div class="sub-num">2</div>
+          <div class="sub-body">
+            <div class="sub-title">🌊 "Summer Charades Beach Edition"</div>
+            <div class="sub-desc">Teams act out summer-related words and phrases — sunburn, making sandcastles, getting stung by a jellyfish, eating halo-halo in the heat — no words, only actions! Most correct guesses wins! 🦀</div>
+            <div class="sub-by">Game Master: TRISHIA</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="divider">· · ·</div>
+    <div class="wave-divider">〰 〰 〰</div>
 
     <!-- 4. Blowing of Candles -->
-    <div class="item">
-      <div class="item-icon">🕯️</div>
-      <div class="item-body">
-        <div class="item-title">Blowing of Candles</div>
-        <div class="item-desc">All March celebrants gather together for a group candle blowing. One big wish for all! 🎂</div>
+    <div class="item c-sun">
+      <div class="icon">🕯️</div>
+      <div class="body">
+        <div class="title t-sun">Blowing of Candles</div>
+        <div class="desc">All March celebrants gather for a group candle blow — make a wish as big as the summer sky! 🌅</div>
       </div>
     </div>
 
-    <!-- 5. Blessing of Food -->
-    <div class="item">
-      <div class="item-icon">✨</div>
-      <div class="item-body">
-        <div class="item-title colored">Blessing of the Food</div>
-        <span class="assignee">Led by: SIR JR</span>
+    <!-- 5. Blessing -->
+    <div class="item c-palm">
+      <div class="icon">✨</div>
+      <div class="body">
+        <div class="title t-palm">Blessing of the Food</div>
+        <div class="desc">A short blessing before we feast. Summer food hits different! 🥥</div>
+        <span class="badge" style="background:rgba(45,106,79,0.1);color:var(--palm)">Led by: SIR JR</span>
       </div>
     </div>
 
     <!-- 6. Eating Time -->
-    <div class="item">
-      <div class="item-icon">🍽️</div>
-      <div class="item-body">
-        <div class="item-title colored3">Eating Time</div>
-        <div class="item-desc">Dig in and enjoy! Celebrants eat first. 🥳</div>
+    <div class="item c-coral">
+      <div class="icon">🍉</div>
+      <div class="body">
+        <div class="title t-coral">Eating Time</div>
+        <div class="desc">Kain na! 🎉 Celebrants eat first — you deserve it, beach stars!</div>
       </div>
     </div>
 
-    <!-- 7. March Photo Presentation -->
-    <div class="item">
-      <div class="item-icon">📸</div>
-      <div class="item-body">
-        <div class="item-title colored4">March Memories Photo Presentation</div>
-        <div class="item-desc">A short slideshow of photos from team highlights and moments this March.</div>
+    <!-- 7. Photo Presentation -->
+    <div class="item c-ocean">
+      <div class="icon">📸</div>
+      <div class="body">
+        <div class="title t-ocean">Summer Memories Photo Presentation</div>
+        <div class="desc">A short slideshow of team photos and memories from March. Cue the summer nostalgia! 🌴</div>
       </div>
     </div>
 
     <!-- 8. Intermission -->
-    <div class="item">
-      <div class="item-icon">🎤</div>
-      <div class="item-body">
-        <div class="item-title colored2">Intermission Number & Sing Along</div>
-        <div class="item-desc">End the bash on a high note! Everyone joins in for a sing-along birthday surprise. 🎶</div>
+    <div class="item c-sun">
+      <div class="icon">🎤</div>
+      <div class="body">
+        <div class="title t-sun">Intermission Number & Sing Along</div>
+        <div class="desc">End the beach bash with a summer banger sing-along! Everyone on their feet — same energy as a beach bonfire! 🔥🎶</div>
       </div>
     </div>
 
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
-    <span class="big-emoji">🎉</span>
-    Happy Birthday, March Celebrants!<br>
-    Made with love by your event organizer
+    <span class="footer-emoji">🏖️🎂🌞</span>
+    <div class="footer-text">Happy Birthday, March Celebrants!</div>
+    <div class="footer-sub">Life is a beach — and you deserve the best waves 🌊</div>
   </div>
 
 </div>
 
-<script>
-  // Floating dots
-  const container = document.getElementById('dots');
-  const colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#fff'];
-  for (let i = 0; i < 25; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot';
-    const size = Math.random() * 10 + 4;
-    d.style.cssText = `
-      width:${size}px; height:${size}px;
-      left:${Math.random()*100}%;
-      background:${colors[Math.floor(Math.random()*colors.length)]};
-      animation-duration:${Math.random()*20+15}s;
-      animation-delay:${Math.random()*20}s;
-    `;
-    container.appendChild(d);
-  }
-</script>
 </body>
 </html>
