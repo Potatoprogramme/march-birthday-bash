@@ -1,533 +1,717 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>March Birthday Bash – Summer Edition 🌞</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --sky: #FFF9ED;
-    --sand: #FDECC8;
-    --ocean: #0096C7;
-    --ocean-light: #48CAE4;
-    --sun: #FFB703;
-    --coral: #FB5607;
-    --palm: #2D6A4F;
-    --foam: #ffffff;
-    --text-dark: #1a1a2e;
-    --text-mid: #3a3a5c;
-    --wave1: #90E0EF;
-    --wave2: #48CAE4;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>March Birthday Bash – Summer Edition 🌞</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="logo.jpg" type="image/x-icon" />
+    <style>
+      :root {
+        --sky: #fff9ed;
+        --sand: #fdecc8;
+        --ocean: #0096c7;
+        --ocean-light: #48cae4;
+        --sun: #ffb703;
+        --coral: #fb5607;
+        --palm: #2d6a4f;
+        --foam: #ffffff;
+        --text-dark: #1a1a2e;
+        --text-mid: #3a3a5c;
+        --wave1: #90e0ef;
+        --wave2: #48cae4;
+      }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  body {
-    background: var(--sky);
-    font-family: 'Nunito', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+      body {
+        background: var(--sky);
+        font-family: "Nunito", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
 
-  /* ===== SUN ===== */
-  .sun {
-    position: fixed;
-    top: -60px;
-    right: -60px;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #FFE566 30%, #FFB703 70%, #FF8C00 100%);
-    box-shadow: 0 0 60px 30px rgba(255,183,3,0.3);
-    animation: pulse-sun 4s ease-in-out infinite;
-    z-index: 0;
-  }
+      /* ===== SUN ===== */
+      .sun {
+        position: fixed;
+        top: -60px;
+        right: -60px;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          #ffe566 30%,
+          #ffb703 70%,
+          #ff8c00 100%
+        );
+        box-shadow: 0 0 60px 30px rgba(255, 183, 3, 0.3);
+        animation: pulse-sun 4s ease-in-out infinite;
+        z-index: 0;
+      }
 
-  @keyframes pulse-sun {
-    0%, 100% { box-shadow: 0 0 60px 30px rgba(255,183,3,0.3); }
-    50% { box-shadow: 0 0 90px 50px rgba(255,183,3,0.5); }
-  }
+      @keyframes pulse-sun {
+        0%,
+        100% {
+          box-shadow: 0 0 60px 30px rgba(255, 183, 3, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 90px 50px rgba(255, 183, 3, 0.5);
+        }
+      }
 
-  /* ===== WAVES ===== */
-  .waves-bottom {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    z-index: 0;
-    overflow: hidden;
-  }
+      /* ===== WAVES ===== */
+      .waves-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        z-index: 0;
+        overflow: hidden;
+      }
 
-  .wave {
-    position: absolute;
-    bottom: 0;
-    width: 200%;
-    height: 80px;
-    border-radius: 100% 100% 0 0;
-  }
+      .wave {
+        position: absolute;
+        bottom: 0;
+        width: 200%;
+        height: 80px;
+        border-radius: 100% 100% 0 0;
+      }
 
-  .wave1 {
-    background: var(--wave1);
-    opacity: 0.5;
-    animation: wave-anim 6s linear infinite;
-    bottom: 20px;
-  }
+      .wave1 {
+        background: var(--wave1);
+        opacity: 0.5;
+        animation: wave-anim 6s linear infinite;
+        bottom: 20px;
+      }
 
-  .wave2 {
-    background: var(--wave2);
-    opacity: 0.4;
-    animation: wave-anim 9s linear infinite reverse;
-    bottom: 0;
-  }
+      .wave2 {
+        background: var(--wave2);
+        opacity: 0.4;
+        animation: wave-anim 9s linear infinite reverse;
+        bottom: 0;
+      }
 
-  .wave3 {
-    background: var(--ocean);
-    opacity: 0.6;
-    animation: wave-anim 7s linear infinite;
-    bottom: -10px;
-    height: 60px;
-  }
+      .wave3 {
+        background: var(--ocean);
+        opacity: 0.6;
+        animation: wave-anim 7s linear infinite;
+        bottom: -10px;
+        height: 60px;
+      }
 
-  @keyframes wave-anim {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+      @keyframes wave-anim {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
 
-  /* ===== FLOATING ELEMENTS ===== */
-  .floatie {
-    position: fixed;
-    font-size: 24px;
-    animation: drift linear infinite;
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: 0;
-  }
+      /* ===== FLOATING ELEMENTS ===== */
+      .floatie {
+        position: fixed;
+        font-size: 24px;
+        animation: drift linear infinite;
+        opacity: 0.6;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-  @keyframes drift {
-    0% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-18px) rotate(5deg); }
-    66% { transform: translateY(8px) rotate(-5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-  }
+      @keyframes drift {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-18px) rotate(5deg);
+        }
+        66% {
+          transform: translateY(8px) rotate(-5deg);
+        }
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+      }
 
-  /* ===== LAYOUT ===== */
-  .wrapper {
-    max-width: 620px;
-    margin: 0 auto;
-    padding: 40px 20px 160px;
-    position: relative;
-    z-index: 1;
-  }
+      /* ===== LAYOUT ===== */
+      .wrapper {
+        max-width: 620px;
+        margin: 0 auto;
+        padding: 40px 20px 160px;
+        position: relative;
+        z-index: 1;
+      }
 
-  /* ===== HEADER ===== */
-  .header {
-    text-align: center;
-    margin-bottom: 36px;
-    animation: splashIn 0.7s cubic-bezier(.34,1.56,.64,1) both;
-  }
+      /* ===== HEADER ===== */
+      .header {
+        text-align: center;
+        margin-bottom: 36px;
+        animation: splashIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
 
-  @keyframes splashIn {
-    from { opacity: 0; transform: scale(0.8) translateY(-20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
+      @keyframes splashIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8) translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
 
-  .tag {
-    display: inline-block;
-    background: var(--ocean);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 6px 20px;
-    border-radius: 100px;
-    margin-bottom: 16px;
-  }
+      .tag {
+        display: inline-block;
+        background: var(--ocean);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 6px 20px;
+        border-radius: 100px;
+        margin-bottom: 16px;
+      }
 
-  h1 {
-    font-family: 'Baloo 2', cursive;
-    font-size: clamp(46px, 12vw, 78px);
-    font-weight: 900;
-    color: var(--coral);
-    line-height: 0.95;
-    text-shadow: 4px 4px 0px rgba(255,140,0,0.3);
-    letter-spacing: -1px;
-  }
+      h1 {
+        font-family: "Baloo 2", cursive;
+        font-size: clamp(46px, 12vw, 78px);
+        font-weight: 900;
+        color: var(--coral);
+        line-height: 0.95;
+        text-shadow: 4px 4px 0px rgba(255, 140, 0, 0.3);
+        letter-spacing: -1px;
+      }
 
-  h1 .line2 {
-    color: var(--ocean);
-    display: block;
-    text-shadow: 4px 4px 0px rgba(0,150,199,0.2);
-  }
+      h1 .line2 {
+        color: var(--ocean);
+        display: block;
+        text-shadow: 4px 4px 0px rgba(0, 150, 199, 0.2);
+      }
 
-  .sub {
-    margin-top: 12px;
-    font-size: 14px;
-    color: var(--text-mid);
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
+      .sub {
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--text-mid);
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
 
-  .duration {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    border: 2px solid var(--sand);
-    padding: 8px 20px;
-    border-radius: 100px;
-    font-size: 13px;
-    color: var(--text-mid);
-    font-weight: 700;
-    margin-top: 14px;
-    box-shadow: 0 4px 0px var(--sand);
-  }
+      .duration {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: white;
+        border: 2px solid var(--sand);
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 13px;
+        color: var(--text-mid);
+        font-weight: 700;
+        margin-top: 14px;
+        box-shadow: 0 4px 0px var(--sand);
+      }
 
-  /* ===== PROGRAM ITEMS ===== */
-  .program {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+      /* ===== PROGRAM ITEMS ===== */
+      .program {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
 
-  .item {
-    background: white;
-    border-radius: 20px;
-    padding: 20px 22px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    border: 2px solid transparent;
-    box-shadow: 0 6px 0px rgba(0,0,0,0.06);
-    animation: riseUp 0.5s ease both;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
+      .item {
+        background: white;
+        border-radius: 20px;
+        padding: 20px 22px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        border: 2px solid transparent;
+        box-shadow: 0 6px 0px rgba(0, 0, 0, 0.06);
+        animation: riseUp 0.5s ease both;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
 
-  .item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 5px;
-    border-radius: 20px 0 0 20px;
-  }
+      .item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        border-radius: 20px 0 0 20px;
+      }
 
-  .item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 0px rgba(0,0,0,0.08);
-  }
+      .item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 0px rgba(0, 0, 0, 0.08);
+      }
 
-  @keyframes riseUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+      @keyframes riseUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  .item:nth-child(1) { animation-delay: 0.1s; }
-  .item:nth-child(2) { animation-delay: 0.2s; }
-  .item:nth-child(3) { animation-delay: 0.3s; }
-  .item:nth-child(4) { animation-delay: 0.35s; }
-  .item:nth-child(5) { animation-delay: 0.4s; }
-  .item:nth-child(6) { animation-delay: 0.45s; }
-  .item:nth-child(7) { animation-delay: 0.5s; }
-  .item:nth-child(8) { animation-delay: 0.55s; }
+      .item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .item:nth-child(4) {
+        animation-delay: 0.35s;
+      }
+      .item:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .item:nth-child(6) {
+        animation-delay: 0.45s;
+      }
+      .item:nth-child(7) {
+        animation-delay: 0.5s;
+      }
+      .item:nth-child(8) {
+        animation-delay: 0.55s;
+      }
 
-  /* Color variants */
-  .c-coral::before { background: var(--coral); }
-  .c-ocean::before { background: var(--ocean); }
-  .c-sun::before { background: var(--sun); }
-  .c-palm::before { background: var(--palm); }
-  .c-coral { border-color: rgba(251,86,7,0.12); }
-  .c-ocean { border-color: rgba(0,150,199,0.15); }
-  .c-sun { border-color: rgba(255,183,3,0.2); }
-  .c-palm { border-color: rgba(45,106,79,0.15); }
+      /* Color variants */
+      .c-coral::before {
+        background: var(--coral);
+      }
+      .c-ocean::before {
+        background: var(--ocean);
+      }
+      .c-sun::before {
+        background: var(--sun);
+      }
+      .c-palm::before {
+        background: var(--palm);
+      }
+      .c-coral {
+        border-color: rgba(251, 86, 7, 0.12);
+      }
+      .c-ocean {
+        border-color: rgba(0, 150, 199, 0.15);
+      }
+      .c-sun {
+        border-color: rgba(255, 183, 3, 0.2);
+      }
+      .c-palm {
+        border-color: rgba(45, 106, 79, 0.15);
+      }
 
-  .icon {
-    font-size: 30px;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
+      .icon {
+        font-size: 30px;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
 
-  .body { flex: 1; }
+      .body {
+        flex: 1;
+      }
 
-  .title {
-    font-family: 'Baloo 2', cursive;
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    line-height: 1.2;
-  }
+      .title {
+        font-family: "Baloo 2", cursive;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
 
-  .title.t-coral { color: var(--coral); }
-  .title.t-ocean { color: var(--ocean); }
-  .title.t-sun { color: #d48f00; }
-  .title.t-palm { color: var(--palm); }
+      .title.t-coral {
+        color: var(--coral);
+      }
+      .title.t-ocean {
+        color: var(--ocean);
+      }
+      .title.t-sun {
+        color: #d48f00;
+      }
+      .title.t-palm {
+        color: var(--palm);
+      }
 
-  .desc {
-    font-size: 13px;
-    color: var(--text-mid);
-    line-height: 1.65;
-  }
+      .desc {
+        font-size: 13px;
+        color: var(--text-mid);
+        line-height: 1.65;
+      }
 
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 3px 12px;
-    border-radius: 100px;
-    margin-top: 8px;
-    letter-spacing: 0.3px;
-  }
+      .badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 3px 12px;
+        border-radius: 100px;
+        margin-top: 8px;
+        letter-spacing: 0.3px;
+      }
 
-  .badge-coral { background: rgba(251,86,7,0.1); color: var(--coral); }
-  .badge-ocean { background: rgba(0,150,199,0.1); color: var(--ocean); }
-  .badge-sun { background: rgba(255,183,3,0.15); color: #b07800; }
+      .badge-coral {
+        background: rgba(251, 86, 7, 0.1);
+        color: var(--coral);
+      }
+      .badge-ocean {
+        background: rgba(0, 150, 199, 0.1);
+        color: var(--ocean);
+      }
+      .badge-sun {
+        background: rgba(255, 183, 3, 0.15);
+        color: #b07800;
+      }
 
-  /* Token box */
-  .token-box {
-    background: linear-gradient(135deg, #FFFBEA, #FFF3CC);
-    border: 1.5px dashed var(--sun);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-top: 12px;
-  }
+      /* Token box */
+      .token-box {
+        background: linear-gradient(135deg, #fffbea, #fff3cc);
+        border: 1.5px dashed var(--sun);
+        border-radius: 14px;
+        padding: 14px 16px;
+        margin-top: 12px;
+      }
 
-  .token-label {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #b07800;
-    margin-bottom: 6px;
-  }
+      .token-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #b07800;
+        margin-bottom: 6px;
+      }
 
-  .token-desc {
-    font-size: 12.5px;
-    color: var(--text-mid);
-    line-height: 1.7;
-  }
+      .token-desc {
+        font-size: 12.5px;
+        color: var(--text-mid);
+        line-height: 1.7;
+      }
 
-  /* Sub items for games */
-  .sub-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 10px;
-    background: rgba(0,150,199,0.05);
-    border-radius: 10px;
-    padding: 10px 12px;
-  }
+      /* Sub items for games */
+      .sub-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 10px;
+        background: rgba(0, 150, 199, 0.05);
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
 
-  .sub-num {
-    font-family: 'Baloo 2', cursive;
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--ocean-light);
-    line-height: 1;
-    flex-shrink: 0;
-  }
+      .sub-num {
+        font-family: "Baloo 2", cursive;
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--ocean-light);
+        line-height: 1;
+        flex-shrink: 0;
+      }
 
-  .sub-body { flex: 1; }
-  .sub-title {
-    font-weight: 800;
-    font-size: 13px;
-    color: var(--ocean);
-    margin-bottom: 3px;
-  }
-  .sub-desc { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
-  .sub-by { font-size: 11px; font-weight: 800; color: var(--coral); margin-top: 4px; }
+      .sub-body {
+        flex: 1;
+      }
+      .sub-title {
+        font-weight: 800;
+        font-size: 13px;
+        color: var(--ocean);
+        margin-bottom: 3px;
+      }
+      .sub-desc {
+        font-size: 12px;
+        color: var(--text-mid);
+        line-height: 1.5;
+      }
+      .sub-by {
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--coral);
+        margin-top: 4px;
+      }
 
-  /* Wave divider */
-  .wave-divider {
-    text-align: center;
-    font-size: 22px;
-    letter-spacing: 6px;
-    margin: 4px 0;
-    opacity: 0.4;
-    color: var(--ocean);
-  }
+      /* Wave divider */
+      .wave-divider {
+        text-align: center;
+        font-size: 22px;
+        letter-spacing: 6px;
+        margin: 4px 0;
+        opacity: 0.4;
+        color: var(--ocean);
+      }
 
-  /* Footer */
-  .footer {
-    text-align: center;
-    margin-top: 40px;
-    padding-bottom: 20px;
-    animation: riseUp 0.5s 0.7s ease both;
-  }
+      /* Footer */
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-bottom: 20px;
+        animation: riseUp 0.5s 0.7s ease both;
+      }
 
-  .footer-emoji { font-size: 40px; display: block; margin-bottom: 10px; }
+      .footer-emoji {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 10px;
+      }
 
-  .footer-text {
-    font-family: 'Baloo 2', cursive;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--ocean);
-  }
+      .footer-text {
+        font-family: "Baloo 2", cursive;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--ocean);
+      }
 
-  .footer-sub {
-    font-size: 12px;
-    color: var(--text-mid);
-    opacity: 0.6;
-    margin-top: 4px;
-    letter-spacing: 1px;
-  }
-</style>
-</head>
-<body>
+      .footer-sub {
+        font-size: 12px;
+        color: var(--text-mid);
+        opacity: 0.6;
+        margin-top: 4px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sun -->
+    <div class="sun"></div>
 
-<!-- Sun -->
-<div class="sun"></div>
-
-<!-- Floating emojis -->
-<div class="floatie" style="top:15%;left:3%;animation-duration:5s;animation-delay:0s;">🌴</div>
-<div class="floatie" style="top:30%;left:92%;animation-duration:7s;animation-delay:1s;">🌊</div>
-<div class="floatie" style="top:55%;left:5%;animation-duration:6s;animation-delay:2s;">🐚</div>
-<div class="floatie" style="top:70%;left:90%;animation-duration:8s;animation-delay:0.5s;">🦀</div>
-<div class="floatie" style="top:80%;left:8%;animation-duration:5.5s;animation-delay:1.5s;">⛱️</div>
-
-<!-- Waves -->
-<div class="waves-bottom">
-  <div class="wave wave1"></div>
-  <div class="wave wave2"></div>
-  <div class="wave wave3"></div>
-</div>
-
-<div class="wrapper">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="tag">☀️ Summer Edition · March</div>
-    <h1>MARCH<span class="line2">BEACH BASH!</span></h1>
-    <p class="sub">🎂 Monthly Birthday Celebration Program 🎂</p>
-    <div class="duration">⏱ 15–30 minutes &nbsp;·&nbsp; Tara na sa celebration!</div>
-  </div>
-
-  <!-- PROGRAM -->
-  <div class="program">
-
-    <!-- 1. Opening Prayer -->
-    <div class="item c-coral">
-      <div class="icon">🙏</div>
-      <div class="body">
-        <div class="title t-coral">Opening Prayer</div>
-        <div class="desc">We kick off with a prayer of gratitude and blessings for all our March beachcombers — err, celebrants!</div>
-        <span class="badge badge-coral">Led by: JAMES</span>
-      </div>
+    <!-- Floating emojis -->
+    <div
+      class="floatie"
+      style="top: 15%; left: 3%; animation-duration: 5s; animation-delay: 0s"
+    >
+      🌴
+    </div>
+    <div
+      class="floatie"
+      style="top: 30%; left: 92%; animation-duration: 7s; animation-delay: 1s"
+    >
+      🌊
+    </div>
+    <div
+      class="floatie"
+      style="top: 55%; left: 5%; animation-duration: 6s; animation-delay: 2s"
+    >
+      🐚
+    </div>
+    <div
+      class="floatie"
+      style="top: 70%; left: 90%; animation-duration: 8s; animation-delay: 0.5s"
+    >
+      🦀
+    </div>
+    <div
+      class="floatie"
+      style="
+        top: 80%;
+        left: 8%;
+        animation-duration: 5.5s;
+        animation-delay: 1.5s;
+      "
+    >
+      ⛱️
     </div>
 
-    <!-- 2. Recognition -->
-    <div class="item c-sun">
-      <div class="icon">🎭</div>
-      <div class="body">
-        <div class="title t-sun">Recognition of March Birthday Celebrants</div>
-        <div class="desc">
-          Each celebrant walks up to receive their recognition — but the emcee introduces them as if they're a <strong>famous summer tourist spot</strong>.
-          <br><br>
-          <em>e.g., "Ladies and gentlemen, welcome to [Name] — known for its warm personality, unpredictable weather, and zero entrance fee!" 🏝️</em>
-          <br><br>
-          The crowd rates each "tourist spot" by waving their hands like a wave! 🌊
+    <!-- Waves -->
+    <div class="waves-bottom">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+    </div>
+
+    <div class="wrapper">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="tag">☀️ Summer Edition · March</div>
+        <h1>MARCH<span class="line2">BIRTHDAY BASH!</span></h1>
+        <p class="sub">🎂 Monthly Birthday Celebration Program 🎂</p>
+        <div class="duration">
+          ⏱ 15–30 minutes &nbsp;·&nbsp; Tara na sa celebration!
         </div>
-        <div class="token-box">
-          <div class="token-label">🎁 Summer Token — "Beach Survival Kit"</div>
-          <div class="token-desc">
-            A small resealable bag tied with a raffia ribbon containing:
-            <br>🌞 <strong>Sunscreen sachet</strong> — "for a bright year ahead"
-            <br>🍬 <strong>Candy</strong> — "because life should be sweet"
-            <br>🪙 <strong>Coin</strong> — "for good fortune"
-            <br>📝 <strong>Handwritten note</strong> from the team — the real treasure
-            <br><br>
-            Cheap to make (~₱25–35) but full of summer heart! 💛
+      </div>
+
+      <!-- PROGRAM -->
+      <div class="program">
+        <!-- 1. Opening Prayer -->
+        <div class="item c-coral">
+          <div class="icon">🙏</div>
+          <div class="body">
+            <div class="title t-coral">Opening Prayer</div>
+            <div class="desc">
+              We kick off with a prayer of gratitude and blessings for all our
+              March beachcombers — err, celebrants!
+            </div>
+            <span class="badge badge-coral">Led by: JAMES</span>
+          </div>
+        </div>
+
+        <!-- 2. Recognition -->
+        <div class="item c-sun">
+          <div class="icon">🎭</div>
+          <div class="body">
+            <div class="title t-sun">
+              Recognition of March Birthday Celebrants
+            </div>
+            <div class="desc">
+              Each celebrant walks up to receive their recognition — but the
+              emcee introduces them as if they're a
+              <strong>famous summer tourist spot</strong>. <br /><br />
+              <em
+                >e.g., "Ladies and gentlemen, welcome to [Name] — known for its
+                warm personality, unpredictable weather, and zero entrance fee!"
+                🏝️</em
+              >
+              <br /><br />
+              The crowd rates each "tourist spot" by waving their hands like a
+              wave! 🌊
+            </div>
+            <div class="token-box">
+              <div class="token-label">🎁 Token</div>
+              <div class="token-desc">
+                Each celebrant receives:
+                <br />📜 <strong>Certificate</strong> — an official recognition
+                of their special day <br />🌸 <strong>Lei</strong> — a flower
+                garland draped around their neck, because nothing says summer
+                celebration like an aloha moment! 🤙
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Games -->
+        <div class="item c-ocean">
+          <div class="icon">🎮</div>
+          <div class="body">
+            <div class="title t-ocean">Summer Games</div>
+            <div class="sub-item">
+              <div class="sub-num">1</div>
+              <div class="sub-body">
+                <div class="sub-title">
+                  🖼️ "4 Pics, 1 Word — Summer Edition"
+                </div>
+                <div class="sub-desc">
+                  Four summer-themed pictures are shown on screen (or printed on
+                  paper) and players guess the one word that connects them all —
+                  done entirely from their seats! Examples: 🌊🏄🐚👙 =
+                  <em>BEACH</em> · 🌞😎🧴🕶️ = <em>SUMMER</em> · 🍦🥭🥤🍉 =
+                  <em>COLD</em>. First team to shout the correct answer scores a
+                  point. Prepare 5–7 rounds for non-stop fun! 🏆
+                </div>
+                <div class="sub-by">Game Master: MARK</div>
+              </div>
+            </div>
+            <div class="sub-item">
+              <div class="sub-num">2</div>
+              <div class="sub-body">
+                <div class="sub-title">
+                  🎬 "Summer Charades — Office Edition"
+                </div>
+                <div class="sub-desc">
+                  One player stands at their spot and acts out a summer-themed
+                  word — no talking, no sounds, just body language! Everyone
+                  else guesses from their seats. Words include: sunburn, eating
+                  halo-halo, building sandcastles, getting stung by a jellyfish,
+                  putting on sunscreen, riding a bangka. The team with the most
+                  correct guesses wins! 🌴
+                </div>
+                <div class="sub-by">Game Master: ELA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wave-divider">〰 〰 〰</div>
+
+        <!-- 4. Blowing of Candles -->
+        <div class="item c-sun">
+          <div class="icon">🕯️</div>
+          <div class="body">
+            <div class="title t-sun">Blowing of Candles</div>
+            <div class="desc">
+              All March celebrants gather for a group candle blow — make a wish
+              as big as the summer sky! 🌅
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Blessing -->
+        <div class="item c-palm">
+          <div class="icon">✨</div>
+          <div class="body">
+            <div class="title t-palm">Blessing of the Food</div>
+            <div class="desc">
+              A short blessing before we feast. Summer food hits different! 🥥
+            </div>
+            <span
+              class="badge"
+              style="background: rgba(45, 106, 79, 0.1); color: var(--palm)"
+              >Led by: SIR JR</span
+            >
+          </div>
+        </div>
+
+        <!-- 6. Eating Time -->
+        <div class="item c-coral">
+          <div class="icon">🍉</div>
+          <div class="body">
+            <div class="title t-coral">Eating Time</div>
+            <div class="desc">
+              Kain na! 🎉 Celebrants eat first — you deserve it, beach stars!
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Photo Presentation -->
+        <div class="item c-ocean">
+          <div class="icon">📸</div>
+          <div class="body">
+            <div class="title t-ocean">Summer Memories Photo Presentation</div>
+            <div class="desc">
+              A short slideshow of team photos and memories from March. Cue the
+              summer nostalgia! 🌴
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Intermission -->
+        <div class="item c-sun">
+          <div class="icon">🎤</div>
+          <div class="body">
+            <div class="title t-sun">Intermission Number & Sing Along</div>
+            <div class="desc">
+              End the beach bash with a summer banger sing-along! Everyone on
+              their feet — same energy as a beach bonfire! 🔥🎶
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- 3. Games -->
-    <div class="item c-ocean">
-      <div class="icon">🎮</div>
-      <div class="body">
-        <div class="title t-ocean">Summer Games</div>
-        <div class="sub-item">
-          <div class="sub-num">1</div>
-          <div class="sub-body">
-            <div class="sub-title">🕵️ "Hot Sand, Don't Stop!" (Musical Chairs — Summer Remix)</div>
-            <div class="sub-desc">Play a fun OPM summer song. Whoever is left standing when it stops has to answer a fun summer question — like "Describe your dream beach in 5 words!" Last person seated wins a treat. ☀️</div>
-            <div class="sub-by">Game Master: MARK</div>
-          </div>
-        </div>
-        <div class="sub-item">
-          <div class="sub-num">2</div>
-          <div class="sub-body">
-            <div class="sub-title">🌊 "Summer Charades Beach Edition"</div>
-            <div class="sub-desc">Teams act out summer-related words and phrases — sunburn, making sandcastles, getting stung by a jellyfish, eating halo-halo in the heat — no words, only actions! Most correct guesses wins! 🦀</div>
-            <div class="sub-by">Game Master: TRISHIA</div>
-          </div>
+      <!-- FOOTER -->
+      <div class="footer">
+        <span class="footer-emoji">🏖️🎂🌞</span>
+        <div class="footer-text">Happy Birthday, March Celebrants!</div>
+        <div class="footer-sub">
+          Life is a beach — and you deserve the best waves 🌊
         </div>
       </div>
     </div>
-
-    <div class="wave-divider">〰 〰 〰</div>
-
-    <!-- 4. Blowing of Candles -->
-    <div class="item c-sun">
-      <div class="icon">🕯️</div>
-      <div class="body">
-        <div class="title t-sun">Blowing of Candles</div>
-        <div class="desc">All March celebrants gather for a group candle blow — make a wish as big as the summer sky! 🌅</div>
-      </div>
-    </div>
-
-    <!-- 5. Blessing -->
-    <div class="item c-palm">
-      <div class="icon">✨</div>
-      <div class="body">
-        <div class="title t-palm">Blessing of the Food</div>
-        <div class="desc">A short blessing before we feast. Summer food hits different! 🥥</div>
-        <span class="badge" style="background:rgba(45,106,79,0.1);color:var(--palm)">Led by: SIR JR</span>
-      </div>
-    </div>
-
-    <!-- 6. Eating Time -->
-    <div class="item c-coral">
-      <div class="icon">🍉</div>
-      <div class="body">
-        <div class="title t-coral">Eating Time</div>
-        <div class="desc">Kain na! 🎉 Celebrants eat first — you deserve it, beach stars!</div>
-      </div>
-    </div>
-
-    <!-- 7. Photo Presentation -->
-    <div class="item c-ocean">
-      <div class="icon">📸</div>
-      <div class="body">
-        <div class="title t-ocean">Summer Memories Photo Presentation</div>
-        <div class="desc">A short slideshow of team photos and memories from March. Cue the summer nostalgia! 🌴</div>
-      </div>
-    </div>
-
-    <!-- 8. Intermission -->
-    <div class="item c-sun">
-      <div class="icon">🎤</div>
-      <div class="body">
-        <div class="title t-sun">Intermission Number & Sing Along</div>
-        <div class="desc">End the beach bash with a summer banger sing-along! Everyone on their feet — same energy as a beach bonfire! 🔥🎶</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <span class="footer-emoji">🏖️🎂🌞</span>
-    <div class="footer-text">Happy Birthday, March Celebrants!</div>
-    <div class="footer-sub">Life is a beach — and you deserve the best waves 🌊</div>
-  </div>
-
-</div>
-
-</body>
+  </body>
 </html>
