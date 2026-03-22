@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>March Birthday Bash 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --card: #161616;
+    --accent1: #FF6B6B;
+    --accent2: #FFD93D;
+    --accent3: #6BCB77;
+    --accent4: #4D96FF;
+    --text: #f0ede6;
+    --muted: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255,107,107,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(77,150,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .confetti-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+  }
+
+  .wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .month-tag {
+    display: inline-block;
+    background: var(--accent1);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 10vw, 72px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  h1 span {
+    color: var(--accent2);
+    display: block;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 12px;
+    letter-spacing: 1px;
+  }
+
+  .duration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+
+  /* PROGRAM ITEMS */
+  .program {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .item {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    animation: fadeUp 0.5s ease both;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .item:hover {
+    border-color: rgba(255,255,255,0.15);
+    transform: translateX(4px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .item:nth-child(1) { animation-delay: 0.1s; }
+  .item:nth-child(2) { animation-delay: 0.2s; }
+  .item:nth-child(3) { animation-delay: 0.3s; }
+  .item:nth-child(4) { animation-delay: 0.35s; }
+  .item:nth-child(5) { animation-delay: 0.4s; }
+  .item:nth-child(6) { animation-delay: 0.45s; }
+  .item:nth-child(7) { animation-delay: 0.5s; }
+  .item:nth-child(8) { animation-delay: 0.55s; }
+
+  .item-icon {
+    font-size: 26px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .item-body { flex: 1; }
+
+  .item-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .item-title.colored { color: var(--accent1); }
+  .item-title.colored2 { color: var(--accent2); }
+  .item-title.colored3 { color: var(--accent3); }
+  .item-title.colored4 { color: var(--accent4); }
+
+  .item-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .assignee {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .sub-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .sub-bullet {
+    color: var(--accent1);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .sub-text {
+    font-size: 13px;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .sub-assignee {
+    font-size: 11px;
+    color: var(--accent4);
+    font-weight: 600;
+  }
+
+  /* SPECIAL CARDS */
+  .item.highlight-red { border-color: rgba(255,107,107,0.3); }
+  .item.highlight-yellow { border-color: rgba(255,217,61,0.3); }
+  .item.highlight-green { border-color: rgba(107,203,119,0.3); }
+
+  /* TOKEN BOX */
+  .token-box {
+    background: linear-gradient(135deg, rgba(255,217,61,0.1), rgba(255,107,107,0.1));
+    border: 1px dashed rgba(255,217,61,0.4);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 12px;
+  }
+
+  .token-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+
+  .token-desc {
+    font-size: 12px;
+    color: var(--text);
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    color: rgba(255,255,255,0.1);
+    font-size: 18px;
+    letter-spacing: 8px;
+    margin: 4px 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+    animation: fadeUp 0.5s 0.7s ease both;
+  }
+
+  .big-emoji {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating dots -->
+<div class="confetti-bg" id="dots"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="month-tag">🎂 Monthly Celebration</div>
+    <h1>MARCH<span>BASH!</span></h1>
+    <p class="subtitle">Birthday Celebration Program</p>
+    <div class="duration-badge">⏱ Approximately 15–30 minutes</div>
+  </div>
+
+  <!-- PROGRAM -->
+  <div class="program">
+
+    <!-- 1. Opening Prayer -->
+    <div class="item">
+      <div class="item-icon">🙏</div>
+      <div class="item-body">
+        <div class="item-title colored">Opening Prayer</div>
+        <div class="item-desc">We begin with a moment of gratitude and blessings for our March celebrants.</div>
+        <span class="assignee">Led by: JAMES</span>
+      </div>
+    </div>
+
+    <!-- 2. Recognition -->
+    <div class="item highlight-yellow">
+      <div class="item-icon">🎭</div>
+      <div class="item-body">
+        <div class="item-title colored2">Recognition of March Birthday Celebrants</div>
+        <div class="item-desc">
+          Each celebrant is called one by one — but here's the twist: instead of a normal introduction,
+          the emcee reads a <strong>"dramatic telenovela narration"</strong> of their life story (exaggerated and made up on the spot). 
+          The celebrant must react dramatically to every line! 🎬
+        </div>
+        <div class="token-box">
+          <div class="token-label">🎁 Token Suggestion</div>
+          <div class="token-desc">
+            <strong>A personalized "Birthday Survival Kit"</strong> — a small resealable bag containing:
+            a <em>candy</em> (for sweetness), a <em>coin</em> (for prosperity), a <em>small note</em> with a handwritten wish from the team, and a <em>rubber band</em> (to keep it all together). 
+            Cheap to make but deeply personal. 💛
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Games -->
+    <div class="item highlight-green">
+      <div class="item-icon">🎮</div>
+      <div class="item-body">
+        <div class="item-title colored3">Games</div>
+        <div class="sub-item">
+          <span class="sub-bullet">→</span>
+          <span class="sub-text">
+            <strong>"Birthday Lie Detector"</strong> — Each celebrant shares 2 truths and 1 lie about themselves. 
+            The crowd votes on which one is the lie!
+            <br><span class="sub-assignee">Game Master: MARK</span>
+          </span>
+        </div>
+        <div class="sub-item">
+          <span class="sub-bullet">→</span>
+          <span class="sub-text">
+            <strong>"Hula Hula Birthday Edition"</strong> — Pass a hula hoop through a line of people without letting go of hands. 
+            The team that finishes fastest wins a treat!
+            <br><span class="sub-assignee">Game Master: TRISHIA</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">· · ·</div>
+
+    <!-- 4. Blowing of Candles -->
+    <div class="item">
+      <div class="item-icon">🕯️</div>
+      <div class="item-body">
+        <div class="item-title">Blowing of Candles</div>
+        <div class="item-desc">All March celebrants gather together for a group candle blowing. One big wish for all! 🎂</div>
+      </div>
+    </div>
+
+    <!-- 5. Blessing of Food -->
+    <div class="item">
+      <div class="item-icon">✨</div>
+      <div class="item-body">
+        <div class="item-title colored">Blessing of the Food</div>
+        <span class="assignee">Led by: SIR JR</span>
+      </div>
+    </div>
+
+    <!-- 6. Eating Time -->
+    <div class="item">
+      <div class="item-icon">🍽️</div>
+      <div class="item-body">
+        <div class="item-title colored3">Eating Time</div>
+        <div class="item-desc">Dig in and enjoy! Celebrants eat first. 🥳</div>
+      </div>
+    </div>
+
+    <!-- 7. March Photo Presentation -->
+    <div class="item">
+      <div class="item-icon">📸</div>
+      <div class="item-body">
+        <div class="item-title colored4">March Memories Photo Presentation</div>
+        <div class="item-desc">A short slideshow of photos from team highlights and moments this March.</div>
+      </div>
+    </div>
+
+    <!-- 8. Intermission -->
+    <div class="item">
+      <div class="item-icon">🎤</div>
+      <div class="item-body">
+        <div class="item-title colored2">Intermission Number & Sing Along</div>
+        <div class="item-desc">End the bash on a high note! Everyone joins in for a sing-along birthday surprise. 🎶</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="big-emoji">🎉</span>
+    Happy Birthday, March Celebrants!<br>
+    Made with love by your event organizer
+  </div>
+
+</div>
+
+<script>
+  // Floating dots
+  const container = document.getElementById('dots');
+  const colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#fff'];
+  for (let i = 0; i < 25; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    const size = Math.random() * 10 + 4;
+    d.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${Math.random()*20+15}s;
+      animation-delay:${Math.random()*20}s;
+    `;
+    container.appendChild(d);
+  }
+</script>
+</body>
+</html>
