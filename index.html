@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Nunito:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="logo.jpg" type="image/x-icon" />
+    <link rel="icon" href="logo.jpg" />
     <style>
       :root {
         --sky: #fff9ed;
@@ -204,6 +204,73 @@
         color: var(--text-mid);
         font-weight: 600;
         letter-spacing: 1px;
+      }
+
+      /* Celebrants Feature */
+      .celebrants-box {
+        background: white;
+        border: 2px solid rgba(0, 150, 199, 0.2);
+        border-radius: 20px;
+        padding: 18px 22px;
+        margin: 20px 0 16px;
+        box-shadow: 0 6px 0px rgba(0, 150, 199, 0.12);
+      }
+
+      .celebrants-label {
+        font-family: "Baloo 2", cursive;
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--ocean);
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+
+      .celebrants-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+      }
+
+      .celeb-chip {
+        background: linear-gradient(135deg, #fff3cc, #ffe8a0);
+        border: 2px solid var(--sun);
+        border-radius: 100px;
+        padding: 8px 18px;
+        font-family: "Baloo 2", cursive;
+        font-size: 14px;
+        font-weight: 800;
+        color: #7a5500;
+        box-shadow: 0 3px 0px rgba(255, 183, 3, 0.3);
+        animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      .celeb-chip:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .celeb-chip:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .celeb-chip:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .celeb-chip:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .celeb-chip:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.7);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .duration {
@@ -542,7 +609,20 @@
       <div class="header">
         <div class="tag">☀️ Summer Edition · March</div>
         <h1>MARCH<span class="line2">BIRTHDAY BASH!</span></h1>
-        <p class="sub">🎂 Monthly Birthday Celebration Program 🎂</p>
+
+        <!-- Celebrants Feature -->
+        <div class="celebrants-box">
+          <div class="celebrants-label">🌸 Celebrating Our March Stars 🌸</div>
+          <div class="celebrants-list">
+            <div class="celeb-chip">🎂 Rolly De la Torre</div>
+            <div class="celeb-chip">🎂 Paulo Perez</div>
+            <div class="celeb-chip">🎂 Aya Eleazar</div>
+            <div class="celeb-chip">🎂 Red Panis</div>
+            <div class="celeb-chip">🎂 Jeff</div>
+          </div>
+        </div>
+
+        <p class="sub">🎉 Monthly Birthday Celebration Program 🎉</p>
         <div class="duration">
           ⏱ 15–30 minutes &nbsp;·&nbsp; Tara na sa celebration!
         </div>
@@ -582,6 +662,13 @@
               <br /><br />
               The crowd rates each "tourist spot" by waving their hands like a
               wave! 🌊
+              <br /><br />
+              <strong>🎂 Our March Stars:</strong><br />
+              🌸 Rolly De la Torre<br />
+              🌸 Paulo Perez<br />
+              🌸 Aya Eleazar<br />
+              🌸 Red Panis<br />
+              🌸 Jeff
             </div>
             <div class="token-box">
               <div class="token-label">🎁 Token</div>
@@ -632,7 +719,7 @@
                   putting on sunscreen, riding a bangka. The team with the most
                   correct guesses wins! 🌴
                 </div>
-                <div class="sub-by">Game Master: ELA</div>
+                <div class="sub-by">Game Master: TBA</div>
               </div>
             </div>
           </div>
