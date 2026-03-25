@@ -206,6 +206,119 @@
         letter-spacing: 1px;
       }
 
+      .difficulty-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .diff-card {
+        border-radius: 12px;
+        padding: 10px 8px;
+        text-align: center;
+        border: 2px solid transparent;
+      }
+
+      .diff-card.easy {
+        background: rgba(107, 203, 119, 0.12);
+        border-color: rgba(107, 203, 119, 0.35);
+      }
+      .diff-card.medium {
+        background: rgba(255, 183, 3, 0.12);
+        border-color: rgba(255, 183, 3, 0.35);
+      }
+      .diff-card.hard {
+        background: rgba(251, 86, 7, 0.1);
+        border-color: rgba(251, 86, 7, 0.3);
+      }
+
+      .diff-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+      }
+
+      .diff-rounds {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 3px;
+      }
+
+      .diff-points {
+        font-family: "Baloo 2", cursive;
+        font-size: 15px;
+        font-weight: 900;
+        color: var(--text-dark);
+      }
+
+      .diff-max {
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-mid);
+        margin-top: 8px;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+      }
+
+      /* Mechanics Box */
+      .mechanics-box {
+        background: rgba(0, 150, 199, 0.06);
+        border: 1.5px solid rgba(0, 150, 199, 0.2);
+        border-radius: 14px;
+        padding: 14px 16px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .mechanics-title {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ocean);
+        margin-bottom: 4px;
+      }
+
+      .mechanic-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 12.5px;
+        color: var(--text-mid);
+        line-height: 1.5;
+      }
+
+      .step-num {
+        background: var(--ocean);
+        color: white;
+        font-size: 10px;
+        font-weight: 800;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .mechanic-note {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: var(--coral);
+        background: rgba(251, 86, 7, 0.07);
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 4px;
+      }
+
       /* Celebrants Feature */
       .celebrants-box {
         background: white;
@@ -644,7 +757,7 @@
         </div>
 
         <!-- 2. Recognition -->
-        <div class="item c-sun">
+        <div class="item c-palm">
           <div class="icon">🎭</div>
           <div class="body">
             <div class="title t-sun">
@@ -683,6 +796,18 @@
           </div>
         </div>
 
+        <!-- 4. Blowing of Candles -->
+        <div class="item c-sun">
+          <div class="icon">🕯️</div>
+          <div class="body">
+            <div class="title t-sun">Blowing of Candles</div>
+            <div class="desc">
+              All March celebrants gather for a group candle blow — make a wish
+              as big as the summer sky! 🌅
+            </div>
+          </div>
+        </div>
+
         <!-- 3. Games -->
         <div class="item c-ocean">
           <div class="icon">🎮</div>
@@ -695,12 +820,69 @@
                   🖼️ "4 Pics, 1 Word — Summer Edition"
                 </div>
                 <div class="sub-desc">
-                  Four summer-themed pictures are shown on screen (or printed on
-                  paper) and players guess the one word that connects them all —
-                  done entirely from their seats! Examples: 🌊🏄🐚👙 =
-                  <em>BEACH</em> · 🌞😎🧴🕶️ = <em>SUMMER</em> · 🍦🥭🥤🍉 =
-                  <em>COLD</em>. First team to shout the correct answer scores a
-                  point. Prepare 5–7 rounds for non-stop fun! 🏆
+                  Four summer-themed pictures are shown on screen and players
+                  guess the one word that connects them all — done entirely from
+                  their seats!
+                </div>
+                <div class="mechanics-box">
+                  <div class="mechanics-title">📋 Game Mechanics</div>
+                  <div class="mechanic-step">
+                    <span class="step-num">1</span
+                    ><span
+                      >The <strong>5 birthday celebrants</strong> are the
+                      players — Rolly, Paulo, Aya, Red, and Jeff compete against
+                      each other!</span
+                    >
+                  </div>
+                  <div class="mechanic-step">
+                    <span class="step-num">2</span
+                    ><span
+                      >The Game Master shows <strong>4 pictures</strong> on
+                      screen. The first celebrant to
+                      <strong>raise their hand</strong> gets to answer.</span
+                    >
+                  </div>
+                  <div class="mechanic-step">
+                    <span class="step-num">3</span
+                    ><span
+                      >A <strong>wrong answer</strong> passes the chance to
+                      whoever raises their hand next.</span
+                    >
+                  </div>
+                  <div class="mechanic-step">
+                    <span class="step-num">4</span
+                    ><span
+                      >There are <strong>7 rounds</strong> total. The celebrant
+                      with the <strong>most points</strong> at the end wins!
+                      🏆</span
+                    >
+                  </div>
+
+                  <div class="difficulty-grid">
+                    <div class="diff-card easy">
+                      <div class="diff-label">🟢 Easy</div>
+                      <div class="diff-rounds">3 rounds</div>
+                      <div class="diff-points">1 pt each</div>
+                    </div>
+                    <div class="diff-card medium">
+                      <div class="diff-label">🟡 Medium</div>
+                      <div class="diff-rounds">2 rounds</div>
+                      <div class="diff-points">2 pts each</div>
+                    </div>
+                    <div class="diff-card hard">
+                      <div class="diff-label">🔴 Hard</div>
+                      <div class="diff-rounds">2 rounds</div>
+                      <div class="diff-points">3 pts each</div>
+                    </div>
+                  </div>
+                  <div class="diff-max">
+                    🏅 Maximum possible score: <strong>13 points</strong>
+                  </div>
+
+                  <div class="mechanic-note">
+                    ⚠️ Shouting answers without raising a hand first = forfeit
+                    for that round!
+                  </div>
                 </div>
                 <div class="sub-by">Game Master: MARK</div>
               </div>
@@ -727,18 +909,6 @@
 
         <div class="wave-divider">〰 〰 〰</div>
 
-        <!-- 4. Blowing of Candles -->
-        <div class="item c-sun">
-          <div class="icon">🕯️</div>
-          <div class="body">
-            <div class="title t-sun">Blowing of Candles</div>
-            <div class="desc">
-              All March celebrants gather for a group candle blow — make a wish
-              as big as the summer sky! 🌅
-            </div>
-          </div>
-        </div>
-
         <!-- 5. Blessing -->
         <div class="item c-palm">
           <div class="icon">✨</div>
@@ -750,7 +920,7 @@
             <span
               class="badge"
               style="background: rgba(45, 106, 79, 0.1); color: var(--palm)"
-              >Led by: TBA</span
+              >Led by: JAYP</span
             >
           </div>
         </div>
